@@ -1,0 +1,21 @@
+@use "../global" as *;
+.main {
+    display: flex;
+    flex-direction: column;
+    background-color: $light;
+    color: $dark;
+    width: 100vw;
+    height: calc(100vh - 80px);
+    .body {
+        @include centerDiv(column);
+        background-color: $light;
+        width: calc(100vw - 200px);
+        height: calc(100vh - 80px);
+        padding: 20px;
+    }
+}
+
+.mainPage {
+    @include centerDiv(column);
+    height: 100%;
+}

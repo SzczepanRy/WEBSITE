@@ -1,0 +1,21 @@
+@mixin centerDiv($type: row) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $type;
+}
+
+$lightest: rgb(126, 158, 203);
+$light: rgb(76, 108, 151);
+$basic: rgb(44, 71, 112);
+$dark: rgb(20, 42, 73);
+$darkest: rgb(5, 17, 33);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    user-select: none;
+    font-family: sans-serif;
+    font-weight: 700;
+    overflow: hidden;
+}

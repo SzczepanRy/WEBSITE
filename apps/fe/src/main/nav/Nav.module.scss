@@ -1,0 +1,33 @@
+@use "../../global.scss" as *;
+
+.nav {
+    width: 100vw;
+    height: 80px;
+    padding: 0px 20px;
+    @include centerDiv();
+    justify-content: space-between;
+    background-color: $dark;
+    .title {
+        @include centerDiv();
+
+        color: $light;
+    }
+    .ol {
+        gap: 10px;
+        @include centerDiv();
+
+        .el {
+            color: $light;
+            @include centerDiv();
+            padding: 5px;
+            border: 2px solid $light;
+
+            border-radius: 5px;
+            &:hover {
+                cursor: pointer;
+                color: $dark;
+                background-color: $light;
+            }
+        }
+    }
+}

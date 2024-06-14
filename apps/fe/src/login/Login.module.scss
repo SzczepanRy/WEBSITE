@@ -1,0 +1,48 @@
+@use "../_global.scss" as *;
+.login {
+    width: 100vw;
+    height: 100vh;
+    @include centerDiv();
+    background-color: $basic;
+    .modal {
+        @include centerDiv(column);
+        gap: 10px;
+
+        border-radius: 10px;
+        padding: 20px;
+        background-color: $dark;
+        .p {
+            background-color: $light;
+            color: $darkest;
+            text-align: center;
+        }
+        .input {
+            all: unset;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: $light;
+            color: $darkest;
+
+            &::placeholder {
+                color: $darkest;
+            }
+        }
+        .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .button {
+                all: unset;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: $light;
+                color: $darkest;
+                &:hover {
+                    cursor: pointer;
+                    color: $light;
+                    background-color: $darkest;
+                }
+            }
+        }
+    }
+}

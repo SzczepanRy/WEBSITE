@@ -1,0 +1,103 @@
+@use "../../../global" as *;
+
+.fileModal {
+    top:0px;
+    left:0px;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: rgba($dark, 0.8);
+
+    .modalForm {
+        position: relative;
+        width: 500px;
+        min-height: 300px;
+        left: calc(50vw - 250px);
+        top: calc(50vh - 300px);
+        @include centerDiv(column);
+
+        background-color: $dark;
+        border-radius: 20px;
+        border: 5px double $light;
+        .title {
+            color: $light;
+            padding-bottom: 10px;
+        }
+        .innerForm {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px;
+            justify-content: space-around;
+            gap: 10px;
+
+            .label {
+                color: $light;
+            }
+            .inputVal {
+                all: unset;
+                color: $light;
+                // background-color: $darkest;
+                padding: 5px;
+                border-radius: 5px;
+                &::file-selector-button {
+                    all: unset;
+                    color: $light;
+                    margin-right: 5px;
+                    padding: 5px;
+                    border: 2px solid $light;
+                    background-color: $dark;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    &:hover {
+                        cursor: pointer;
+                        color: $dark;
+                        background-color: $light;
+                        border: 2px solid $dark;
+                    }
+                }
+            }
+
+            .button {
+                all: unset;
+                width: 30%;
+                border: 5px double $light;
+                border-radius: 10px;
+                padding: 5px;
+                color: $light;
+                text-align: center;
+                background-color: $dark;
+            }
+            .button:hover {
+                cursor: pointer;
+                border: 5px double $dark;
+                border-radius: 10px;
+                background-color: $light;
+                padding: 5px;
+                color: $dark;
+                text-align: center;
+            }
+        }
+        .button {
+            all: unset;
+            width: 30%;
+            border: 5px double $light;
+            border-radius: 10px;
+            padding: 5px;
+            color: $light;
+            text-align: center;
+            background-color: $dark;
+        }
+        .button:hover {
+            cursor: pointer;
+            border: 5px double $dark;
+            border-radius: 10px;
+            background-color: $light;
+            padding: 5px;
+            color: $dark;
+            text-align: center;
+        }
+    }
+}
