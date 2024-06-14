@@ -4,18 +4,20 @@ import { PassportStrategy } from '@nestjs/passport';
 //import { User } from '../user/user.entity';
 //import { Repository } from 'typeorm';
 import { Injectable, Inject } from '@nestjs/common';
+import { EnvService } from 'src/env/env.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(
        // @Inject('USER_REPOSITORY')
        // private userRepository: Repository<User>,
+        envService:EnvService
     ) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             // secretOrKey: process.env.AUTH_KEY,
             ignoreExpiration: false,
-            secretOrKey: 'dfagyhbprgaupibareugpbny392h9j',
+            secretOrKey: envService.get("AUTH_KEY")
         });
     }
 

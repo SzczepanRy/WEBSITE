@@ -4,9 +4,17 @@ import style from "./Nav.module.scss";
 
 export default function Nav() {
     const navigate = useNavigate();
-    function logout() {
+    function logout(): void {
         localStorage.clear();
         navigate("/");
+    }
+
+    function checkLocalStorage(): boolean {
+        if (localStorage.getItem("loginData")) {
+            return true
+        } else {
+            return false
+        }
     }
 
     return (
@@ -21,23 +29,30 @@ export default function Nav() {
                 >
                     main
                 </li>
-                <li
-                    className={style.el}
-                    onClick={() => {
-                        navigate("/main/php");
-                    }}
-                >
-                    php
-                </li>
+                {
+                    checkLocalStorage() && (
+                        <>
+                            <li
+                                className={style.el}
+                                onClick={() => {
+                                    navigate("/main/php");
+                                }}
+                            >
+                                php
+                            </li>
 
-                <li
-                    className={style.el}
-                    onClick={() => {
-                        navigate("/main/calendar");
-                    }}
-                >
-                    calendar
-                </li>
+                            <li
+                                className={style.el}
+                                onClick={() => {
+                                    navigate("/main/calendar");
+                                }}
+                            >
+                                calendar
+                            </li>
+
+                        </>
+                    )
+                }
                 <li
                     className={style.el}
                     onClick={() => {
