@@ -12,6 +12,9 @@ import { FilesService } from './files/files.service';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
 import { EnvModule } from './env/env.module';
+import { TasksService } from './tasks/tasks.service';
+import { TasksController } from './tasks/tasks.controller';
+import { TasksModule } from './tasks/tasks.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
@@ -20,6 +23,7 @@ import { EnvModule } from './env/env.module';
     UserModule,
     FilesModule,
     EnvModule,
+    TasksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
