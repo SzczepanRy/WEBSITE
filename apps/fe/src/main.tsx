@@ -7,8 +7,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import About from "./main/about/About.tsx";
 import Php from "./main/php/Php.tsx";
 import JsPage from "./main/js/JsPage.tsx";
-import Calendar from "./main/calendar/Calendar.tsx";
-
+import Tasks from "./main/tasks/Tasks.tsx";
 const queryClient = new QueryClient({
     defaultOptions: { queries: { staleTime: 1000 * 10 } },
 });
@@ -33,8 +32,8 @@ const router = createBrowserRouter([
                 element: <Php />,
             },
            {
-                path: "calendar",
-                element: <Calendar />,
+                path: "tasks",
+                element: <Tasks/>,
             },
             {
                 path: "mainpage",

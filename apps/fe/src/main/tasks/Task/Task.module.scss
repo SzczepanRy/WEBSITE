@@ -1,0 +1,85 @@
+@use "../../../global" as *;
+
+.task {
+    @include centerDiv(column);
+    background-color: $dark;
+    border-radius: 10px;
+    width: 500px;
+    color: $light;
+    border: $light 5px double;
+    min-width: 400px !important;
+    padding: 10px;
+    margin: 10px;
+
+    .nav {
+        @include centerDiv();
+        width: 100%;
+        height: 30px;
+        justify-content: space-around;
+
+        .desc {
+            @include centerDiv();
+            height: 30px;
+            width: 60%;
+            background: $light;
+            border: $light 5px double;
+            color: $dark;
+            border-radius: 5px;
+
+        }
+
+        .buttons {
+            all: unset;
+            height: 80%;
+            width: 30%;
+            @include centerDiv();
+            justify-content: space-around;
+
+            li {
+
+                all: unset;
+
+                @include centerDiv();
+                height: 30px;
+                background-color: $light;
+                color: $dark;
+                padding: 0px 10px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    button {
+        all: unset;
+        @include centerDiv();
+        height: 30px;
+        border-radius: 5px;
+
+        width: 98%;
+    }
+
+    .done {
+        background: $dark;
+        border: $dark 5px double;
+        color: $light;
+
+    }
+
+
+    .notDone {
+        background: $light;
+        border: $light 5px double;
+        color: $dark;
+
+    }
+
+    .body {
+        width: 100%;
+        min-height: 100px;
+        padding: 10px;
+        margin: 5px;
+        border: $light 5px double;
+        border-radius: 10px;
+
+    }
+}

@@ -1,0 +1,26 @@
+
+@use "../../global" as *;
+
+header{
+    @include centerDiv();
+    margin:5px ;
+    .add{
+        background-color: $dark;
+        padding: 10px 20px;
+        color: $light;
+        border-radius: 5px;
+    }
+    .add:hover{
+        cursor:pointer;
+    }
+}
+
+
+.tasks{
+    @include centerDiv();
+    align-content: flex-start;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow-y: auto;
+}
+

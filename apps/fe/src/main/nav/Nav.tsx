@@ -9,13 +9,6 @@ export default function Nav() {
         navigate("/");
     }
 
-    function checkLocalStorage(): boolean {
-        if (localStorage.getItem("loginData")) {
-            return true
-        } else {
-            return false
-        }
-    }
 
     return (
         <div className={style.nav}>
@@ -29,30 +22,26 @@ export default function Nav() {
                 >
                     main
                 </li>
-                {
-                    checkLocalStorage() && (
-                        <>
-                            <li
-                                className={style.el}
-                                onClick={() => {
-                                    navigate("/main/php");
-                                }}
-                            >
-                                php
-                            </li>
+                <>
+                    <li
+                        className={style.el}
+                        onClick={() => {
+                            navigate("/main/php");
+                        }}
+                    >
+                        php
+                    </li>
 
-                            <li
-                                className={style.el}
-                                onClick={() => {
-                                    navigate("/main/calendar");
-                                }}
-                            >
-                                calendar
-                            </li>
+                    <li
+                        className={style.el}
+                        onClick={() => {
+                            navigate("/main/tasks");
+                        }}
+                    >
+                        tasks
+                    </li>
 
-                        </>
-                    )
-                }
+                </>
                 <li
                     className={style.el}
                     onClick={() => {

@@ -32,7 +32,6 @@ export class TasksService {
             }
 
         })
-        console.log(tasks)
         return tasks
     }
 
@@ -68,9 +67,20 @@ export class TasksService {
             })
             .where("id = :id", { id: id })
             .execute()
-        return  {message:"update fsuccessfull i think ", success:true}
+        console.log("update")
+        return  {message:"update successfull i think ", success:true}
     }
 
+    async deleteTask(id : number):Promise<{ message: string, success: boolean }>  {
+        await this.tasksRepository
+            .createQueryBuilder()
+            .delete()
+            .where("id = :id", { id: id })
+            .execute()
+
+        return  {message:"delete successfull i think ", success:true}
+
+    }
 
 
 }

@@ -20,7 +20,6 @@ export class FilesController {
     constructor(private readonly filesService: FilesService, private authService: AuthService) { }
 
 
-    @UseGuards(JwtAuthGuard)
     @Get('/all')
     getFiles(): { files: string[]; success: boolean } {
         return this.filesService.findFiles();

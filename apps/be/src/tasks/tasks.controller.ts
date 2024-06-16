@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Post, UseGuards } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Task } from './tasks.entity';
@@ -10,7 +10,6 @@ export class TasksController {
     ) { }
 
 
-    @UseGuards(JwtAuthGuard)
     @Post("/all")
     getPostsForUser(@Body() { login }: { login: string }): Promise<Task[]> {
         return this.tasksService.findTasksForUser(login)
@@ -22,10 +21,16 @@ export class TasksController {
         return this.tasksService.addTaskForUser(description, body, login)
     }
     @UseGuards(JwtAuthGuard)
-    @Patch("/updateDone")
+    @Post("/update")
     updateDoneById(@Body() { description , body , done , id }: {description:string , body:string , done:boolean, id:number }): Promise<{message:string , success:boolean}> {
         return this.tasksService.updateTagById(description, body , done,id)
     }
 
+
+    @UseGuards(JwtAuthGuard)
+    @Delete("/delete")
+    deleteTask(@Body() { id}: { id:number }): Promise<{message:string , success:boolean}> {
+        return this.tasksService.deleteTask(id)
+    }
 
 }

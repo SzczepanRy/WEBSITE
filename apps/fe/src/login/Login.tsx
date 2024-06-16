@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import net from "../net/net";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
-import { checkStorage } from "../utils/checkStorage";
 
 export default function Login() {
     const [validCheck, setValidCheck] = useState("");
@@ -18,19 +17,13 @@ export default function Login() {
 
         if (data) {
             //redirect
-
+            localStorage.setItem("currentUser", login)
             localStorage.setItem("loginData", data);
             navigate("/main/mainpage");
         } else {
             setValidCheck("login faled");
         }
     }
-
-    useEffect(() => {
-        if (checkStorage()) {
-            navigate("/main/mainpage");
-        }
-    }, []);
     return (
         <div className={styles.login}>
             <div className={styles.modal}>
