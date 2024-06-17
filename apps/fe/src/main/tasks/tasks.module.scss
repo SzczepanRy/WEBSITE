@@ -1,26 +1,62 @@
-
 @use "../../global" as *;
 
-header{
+header {
     @include centerDiv();
-    margin:5px ;
-    .add{
+    margin: 5px;
+        height: 50px;
+    .add {
         background-color: $dark;
         padding: 10px 20px;
         color: $light;
         border-radius: 5px;
     }
-    .add:hover{
-        cursor:pointer;
+
+    .add:hover {
+        cursor: pointer;
     }
 }
 
+main {
 
-.tasks{
-    @include centerDiv();
-    align-content: flex-start;
-    flex-wrap: wrap;
-    height: 100%;
-    overflow-y: auto;
+    width: 100vw;
+    nav {
+        @include centerDiv();
+        width: 100%;
+        background-color: $light;
+        gap:10px;
+        .user {
+
+            @include centerDiv();
+            max-width: 300px;
+            min-width: 120px;
+            height: 50px;
+            border: 2px solid $dark;
+            border-radius: 10px;
+            background-color: $light;
+                color:$dark;
+        }
+   .selected {
+
+            @include centerDiv();
+            max-width: 300px;
+            min-width: 120px;
+            height: 50px;
+            border: 2px solid $light;
+            border-radius: 10px;
+            background-color: $dark;
+                color:$light;
+        }
+
+
+    }
+
+    .tasks {
+        @include centerDiv();
+        align-content: flex-start;
+        flex-wrap: wrap;
+        height: 88vh;
+        overflow-y: auto;
+    }
+
+
 }
-

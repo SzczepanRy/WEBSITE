@@ -14,20 +14,34 @@ export default function Tasks() {
     const [isAdmin, setIsAdmin] = useState(false);
     const [RefreshNum, setRefreshNum] = useState<number>(0);
 
+
+    const [currentUser, setCurrentUser] = useState("all")
+    const [users, setUsers] = useState(["all"])
+
     const allTasks = useQuery({
         queryKey: ["tasks"],
-        queryFn: net.fetchAllTasks,
+        queryFn: async()=>{
+                let res = await net.fetchAllTasks()
+                getUsers(res)
+                return res
+        }
     });
 
 
     useEffect(() => {
-        setTimeout(() => {
-            setIsAdmin(checkStorage())
-            console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
-            allTasks.refetch()
-        }, 50)
-
+        allTasks.refetch()
+        setIsAdmin(checkStorage())
     }, [RefreshNum])
+
+    function getUsers(users: TaskI[]) {
+        const allUsers: string[] = ["all"];
+        users.map((el) => {
+            if (!allUsers.includes(el.user.login)) {
+                allUsers.push(el.user.login)
+            }
+        })
+        setUsers(allUsers)
+    }
 
 
     if (allTasks.status === "pending") {
@@ -36,6 +50,7 @@ export default function Tasks() {
     if (allTasks.status === "error") {
         return <h1>error</h1>;
     }
+
     return (
         <>
             <header>
@@ -54,14 +69,30 @@ export default function Tasks() {
                     <AddModal setRefreshNum={setRefreshNum} setAddModal={setAddModal} />
                 )
             }
-            <div className={style.tasks}>
-                {
-                    allTasks.data.map((task: TaskI, i: number) => {
-                        return <Task setRefreshNum={setRefreshNum} task={task} isAdmin={isAdmin} key={i} />
-                    })
-                }
+            <main>
+                <nav>
+                    {
+                        users.map((user: string, i: number) => {
 
-            </div>
+                            return (
+                                <div key={i} onClick={() => { setCurrentUser(user) }} className={user == currentUser ? style.selected : style.user}>{user}</div>
+                            )
+                        })
+                    }
+                </nav>
+                <div className={style.tasks}>
+                    {
+                        allTasks.data.map((task: TaskI, i: number) => {
+                            if (currentUser == task.user.login || currentUser == "all") {
+
+                                return <Task setRefreshNum={setRefreshNum} task={task} isAdmin={isAdmin} key={i} />
+                            }
+                        })
+                    }
+
+                </div>
+
+            </main>
         </>
     )
 }
