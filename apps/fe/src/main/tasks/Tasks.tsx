@@ -20,10 +20,10 @@ export default function Tasks() {
 
     const allTasks = useQuery({
         queryKey: ["tasks"],
-        queryFn: async()=>{
-                let res = await net.fetchAllTasks()
-                getUsers(res)
-                return res
+        queryFn: async () => {
+            let res = await net.fetchAllTasks()
+            getUsers(res)
+            return res
         }
     });
 
@@ -81,6 +81,7 @@ export default function Tasks() {
                     }
                 </nav>
                 <div className={style.tasks}>
+
                     {
                         allTasks.data.map((task: TaskI, i: number) => {
                             if (currentUser == task.user.login || currentUser == "all") {

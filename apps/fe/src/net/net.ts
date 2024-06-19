@@ -1,5 +1,5 @@
-const localUrl = "http://localhost:3000"
-//const localUrl = ""
+//const localUrl = "http://localhost:3000"
+const localUrl = ""
 const net = {
     async fetchLogin(login: string, password: string) {
         const res = await fetch(localUrl + "/api/user/login", {

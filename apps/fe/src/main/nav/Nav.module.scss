@@ -6,6 +6,7 @@
     padding: 0px 20px;
     @include centerDiv();
     justify-content: space-between;
+    flex-wrap:wrap;
     background-color: $dark;
     .title {
         @include centerDiv();

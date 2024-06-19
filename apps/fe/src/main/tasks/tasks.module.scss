@@ -3,7 +3,7 @@
 header {
     @include centerDiv();
     margin: 5px;
-        height: 50px;
+    height: 50px;
     .add {
         background-color: $dark;
         padding: 10px 20px;
@@ -24,6 +24,7 @@ main {
         width: 100%;
         background-color: $light;
         gap:10px;
+        padding-bottom:10px;
         .user {
 
             @include centerDiv();
@@ -49,12 +50,11 @@ main {
 
 
     }
-
     .tasks {
         @include centerDiv();
         align-content: flex-start;
         flex-wrap: wrap;
-        height: 88vh;
+        height: 80vh;
         overflow-y: auto;
     }
 
