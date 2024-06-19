@@ -10,6 +10,8 @@ function MyThree() {
     const [mouseIsDown, setMouseIsDown] = useState(false)
 
 
+
+
     useEffect(() => {
         // === THREE.JS CODE START ===
         // if (render) {
@@ -26,6 +28,9 @@ function MyThree() {
         // use ref as a mount point of the Three.js scene instead of the document.body
         //
 
+
+
+
         refContainer.current.innerHTML = "";
         refContainer.current.append(renderer.domElement);
         var geometry = new THREE.BoxGeometry(2, 3, 1);
@@ -34,14 +39,20 @@ function MyThree() {
         scene.add(cube);
         camera.position.z = 5;
 
+
         var animate = function() {
             refAnimation.current = requestAnimationFrame(animate);
-            console.log(mouseIsDown)
-            if (mouseIsDown) {
+            if (!mouseIsDown) {
+                // controls.update();
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+
 
             } else {
 
+                cube.scale.set(1.5, 1.5, 1)
                 cube.rotation.x += 0.01;
+
                 cube.rotation.y += 0.01;
             }
 

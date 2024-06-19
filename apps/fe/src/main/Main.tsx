@@ -8,6 +8,7 @@ import { checkStorage } from "../utils/checkStorage.js";
 export function MainPage() {
     const [isAdmin, setIsAdmin] = useState(false);
 
+
     useEffect(() => {
         setIsAdmin(checkStorage());
     }, []);
@@ -23,9 +24,10 @@ export function MainPage() {
 }
 
 export function Main() {
+
     return (
         <>
-            <Nav />
+            <Nav  />
             <main className={style.main}>
                 <Outlet />
             </main>
